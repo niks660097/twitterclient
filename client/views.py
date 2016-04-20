@@ -35,6 +35,7 @@ class LoginUser(View):
                 auth.get_access_token(verifier)
                 request.session['auth_access_token'] = auth.access_token
                 request.session['auth_token_secret'] = auth.access_token_secret
+                return redirect('/home/')
             except tweepy.TweepError:
                 print 'Error! Failed to get access token.'
         else:
