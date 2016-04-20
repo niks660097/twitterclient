@@ -4,9 +4,9 @@ import tweepy
 from django.template import Template, Context, loader
 from django.shortcuts import redirect
 
-consumer_token = ''
-consumer_secret = ''
-callback_url = ''
+consumer_token = 'zpoLczki1nN5RkZ8Ll0DKebXT'
+consumer_secret = 'tOpkUB4OsmZAotkVX85VzEiJTY2YXwP14JXLacUl02BG0hOJJZ'
+callback_url = 'https://quiet-springs-48027.herokuapp.com/login/'
 
 class LoginUser(View):
 
