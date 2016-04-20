@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h2>{{ username }}</h2>
+<form method="post">
+<input type="text" name="tweet">
+<button type="submit">POST</button>
+</form>
+<ul>
+{% for i in tweets %}
+    <li>{{ i.text }}</li>
+{% endfor %}
+</ul>
+</body>
+</html>
