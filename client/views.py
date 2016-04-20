@@ -20,7 +20,6 @@ class LoginUser(View):
             res['Location'] = location
             return res
         except tweepy.TweepError:
-
             print 'Error in login post! Failed to get request token.'
 
 
