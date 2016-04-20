@@ -8,9 +8,6 @@ consumer_token = ''
 consumer_secret = ''
 callback_url = ''
 
-def get_customer_details():
-
-
 class LoginUser(View):
 
     def post(self, request, *args, **kwargs):
