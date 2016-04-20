@@ -21,7 +21,8 @@ class LoginUser(View):
             res['Location'] = location
             return res
         except tweepy.TweepError:
-            print 'Error! Failed to get request token.'
+
+            print 'Error in login post! Failed to get request token.'
 
 
     def get(self, request, *args, **kwargs):
@@ -37,7 +38,7 @@ class LoginUser(View):
                 request.session['auth_token_secret'] = auth.access_token_secret
                 return redirect('/home/')
             except tweepy.TweepError:
-                print 'Error! Failed to get access token.'
+                print 'Error in login get! Failed to get access token.'
         else:
             if request.session.get('auth_access_token') and request.session.get('auth_token_secret'):
                 return redirect('/home/')
