@@ -11,8 +11,7 @@ callback_url = 'https://quiet-springs-48027.herokuapp.com/login/'
 class LoginUser(View):
 
     def post(self, request, *args, **kwargs):
-        auth = tweepy.OAuthHandler(consumer_token, consumer_secret,
-        callback_url)
+        auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
         try:
             redirect_url = auth.get_authorization_url()
             request.session['request_token'] = auth.request_token
@@ -29,8 +28,7 @@ class LoginUser(View):
         if request.GET.get('oauth_verifier'):
             try:
                 verifier = request.GET.get('oauth_verifier')
-                auth = tweepy.OAuthHandler(consumer_token, consumer_secret,
-                callback_url)
+                auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
                 auth.request_token = request.session['request_token']
                 del request.session['request_token']
                 auth.get_access_token(verifier)
