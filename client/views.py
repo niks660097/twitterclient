@@ -55,7 +55,7 @@ class HomePage(View):
         auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
         auth.set_access_token(request.session['auth_access_token'], request.session['auth_token_secret'])
         api = tweepy.API(auth)
-        user = api.get_user()
+        user = api.verify_credentials()
         context = {}
         context['username'] = user.screen_name
         context['tweets'] = api.user_timeline()[:10]
