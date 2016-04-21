@@ -71,5 +71,6 @@ class HomePage(View):
         auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
         auth.set_access_token(request.session['auth_access_token'], request.session['auth_token_secret'])
         api = tweepy.API(auth)
+
         api.update_status(request.POST.get('tweet'))
         return redirect('/home/')
