@@ -55,10 +55,10 @@ class HomePage(View):
         auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
         auth.set_access_token(request.session['auth_access_token'], request.session['auth_token_secret'])
         api = tweepy.API(auth)
-        user = api.get_user('twitter')
+        user = api.get_user()
         context = {}
         context['username'] = user.screen_name
-        context['tweets'] = api.user_timeline(user.screen_name)
+        context['tweets'] = api.user_timeline()[:10]
         template = loader.get_template('tweet.html')
         c = Context(context)
         rendered = template.render(c)
