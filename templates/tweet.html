@@ -5,12 +5,13 @@
     <title></title>
 </head>
 <body>
-<h2>{{ username }}</h2>
-<h3>last 10 tweets</h3>
+<h2>Username - {{ username }}</h2>
+
 <form method="post">
 <input type="text" name="tweet" required="required">
 <button type="submit">POST</button>
 </form>
+<h3>last 10 tweets</h3>
 <ul>
 {% for i in tweets %}
     <li>{{ i.text }}</li>
