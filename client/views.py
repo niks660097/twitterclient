@@ -59,6 +59,9 @@ class HomePage(View):
         context = {}
         context['username'] = user.screen_name
         context['tweets'] = api.user_timeline()[:10]
+        print context
+        for i in context['tweets']:
+            print i, 'kk'
         template = loader.get_template('tweet.html')
         c = Context(context)
         rendered = template.render(c)
