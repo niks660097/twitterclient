@@ -52,20 +52,23 @@ class HomePage(View):
         '''
         post tweet, callback url for login
         '''
-        auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
-        auth.set_access_token(request.session['auth_access_token'], request.session['auth_token_secret'])
-        api = tweepy.API(auth)
-        user = api.verify_credentials()
-        context = {}
-        context['username'] = user.screen_name
-        context['tweets'] = api.user_timeline()[:10]
-        print context
-        for i in context['tweets']:
-            print i, 'kk'
-        template = loader.get_template('tweet.html')
-        c = Context(context)
-        rendered = template.render(c)
-        return HttpResponse(rendered)
+        try:
+            auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
+            auth.set_access_token(request.session['auth_access_token'], request.session['auth_token_secret'])
+            api = tweepy.API(auth)
+            user = api.verify_credentials()
+            context = {}
+            context['username'] = user.screen_name
+            context['tweets'] = api.user_timeline()[:10]
+            print context
+            for i in context['tweets']:
+                print i, 'kk'
+            template = loader.get_template('tweet.html')
+            c = Context(context)
+            rendered = template.render(c)
+            return HttpResponse(rendered)
+        except:
+            return redirect('/login/')
 
     def post(self, request, *args, **kwargs):
         auth = tweepy.OAuthHandler(consumer_token, consumer_secret)
